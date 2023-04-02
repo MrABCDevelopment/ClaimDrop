@@ -1,0 +1,10 @@
+name: ClaimDrop
+version: ${project.artifactId}
+main: me.dreamdevs.github.claimdrop.ClaimDropMain
+author: DreamDevs
+api-version: 1.13
+
+commands:
+  claimdrop:
+    aliases: [claimdrops, cdrops, cdrop]
+    description: Manage your drop options.
