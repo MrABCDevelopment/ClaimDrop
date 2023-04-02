@@ -41,7 +41,7 @@ public class ClaimDropMain extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> new UpdateChecker(ClaimDropMain.getInstance(), 100851).getVersion(version -> {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> new UpdateChecker(ClaimDropMain.getInstance(), 108991).getVersion(version -> {
             if (getDescription().getVersion().equals(version)) {
                 Util.sendPluginMessage("");
                 Util.sendPluginMessage("&aThere is new ClaimDrop version!");
