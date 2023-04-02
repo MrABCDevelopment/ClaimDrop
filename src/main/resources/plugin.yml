@@ -1,5 +1,5 @@
-name: ClaimDrop
-version: ${project.artifactId}
+name: ${project.artifactId}
+version: ${project.version}
 main: me.dreamdevs.github.claimdrop.ClaimDropMain
 author: DreamDevs
 api-version: 1.13
