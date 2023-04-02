@@ -1,13 +1,6 @@
 database:
   use: false
   type: "YAML"
-  #in seconds
-  auto-save-time: 300
-  host: "localhost"
-  user: "user"
-  password: "password"
-  database: "database"
-  port: 3306
 
 # Chat, title or actionbar, default is title
 message-type: "title"
