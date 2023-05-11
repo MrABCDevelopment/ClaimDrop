@@ -7,6 +7,7 @@ message-type: "title"
 
 messages:
   drop-normal: '&aNow drops will drop normally.'
+  drop-off: '&aNow drops will not drop!'
   drop-inventory: '&aNow drops will drop into your inventory, but remember, if your inventory is full, then they will drop normally.'
   drop-enderchest: '&aNow drops will drop into your enderchest, but remember, if your enderchest is full, then they will drop normally.'
   full-inventory: '&cYour inventory is full!'

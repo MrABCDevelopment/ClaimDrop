@@ -59,6 +59,8 @@ public class CommandHandler implements TabExecutor {
                 GItem normal = new GItem(Material.DIRT, "&6&lNormal Drop", ColourUtil.colouredLore("", "&7Natural Minecraft drop, nothing special."));
                 GItem inventory = new GItem(Material.CHEST, "&6&lInventory Drop", ColourUtil.colouredLore("", "&7Drops into your inventory,", "&7but when it is full then drops normally."));
                 GItem enderchest = new GItem(Material.ENDER_CHEST, "&6&lEnderChest Drop", ColourUtil.colouredLore("", "&7Drops into your enderchest,", "&7but when it is full then drops normally."));
+                GItem dropsOff = new GItem(Material.BONE, "&6&lDrops Off", ColourUtil.colouredLore("", "&7Your drop is off!"));
+
                 normal.addAction(event -> {
                     ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().put(player.getUniqueId(), DropOption.NORMAL);
                     event.getPlayer().closeInventory();
@@ -77,10 +79,17 @@ public class CommandHandler implements TabExecutor {
                     event.getPlayer().sendMessage(ClaimDropMain.getInstance().getMessagesManager().getMessage("drop-enderchest"));
                 });
 
+                dropsOff.addAction(event -> {
+                    ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().put(player.getUniqueId(), DropOption.DROPS_OFF);
+                    event.getPlayer().closeInventory();
+                    event.getPlayer().sendMessage(ClaimDropMain.getInstance().getMessagesManager().getMessage("drop-off"));
+                });
+
                 gui.setItem(4, getActualOption(player.getUniqueId()));
-                gui.setItem(11, normal);
-                gui.setItem(13, inventory);
-                gui.setItem(15, enderchest);
+                gui.setItem(10, normal);
+                gui.setItem(12, inventory);
+                gui.setItem(14, enderchest);
+                gui.setItem(16, dropsOff);
 
                 gui.openGUI(player);
                 return true;
