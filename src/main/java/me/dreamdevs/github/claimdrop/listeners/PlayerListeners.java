@@ -11,6 +11,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,8 +19,14 @@ public class PlayerListeners implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void blockBreakEvent(BlockBreakEvent event) {
-        if(event.getPlayer().getGameMode() != GameMode.SURVIVAL) return;
-        if(ClaimDropMain.getInstance().getClaimDropManager().getOption(event.getPlayer().getUniqueId()) == DropOption.NORMAL) return;
+        if(event.getPlayer().getGameMode() != GameMode.SURVIVAL)
+            return;
+        if(ClaimDropMain.getInstance().getClaimDropManager().getOption(event.getPlayer().getUniqueId()) == DropOption.DROPS_OFF) {
+            event.setDropItems(false);
+            return;
+        }
+        if(ClaimDropMain.getInstance().getClaimDropManager().getOption(event.getPlayer().getUniqueId()) == DropOption.NORMAL)
+            return;
         if(ClaimDropMain.getInstance().getClaimDropManager().getOption(event.getPlayer().getUniqueId()) == DropOption.INVENTORY) {
             event.setDropItems(false);
             Inventory inventory = event.getPlayer().getInventory();
@@ -50,12 +57,18 @@ public class PlayerListeners implements Listener {
                 }
             });
         }
+
     }
 
     @EventHandler
     public void joinEvent(PlayerJoinEvent event) {
-        if(ClaimDropMain.getInstance().getClaimDropManager().getOption(event.getPlayer().getUniqueId()) == null)
-            ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().put(event.getPlayer().getUniqueId(), DropOption.NORMAL);
+        ClaimDropMain.getInstance().getDatabase().loadData(event.getPlayer());
+    }
+
+    @EventHandler
+    public void quitEvent(PlayerQuitEvent event) {
+        ClaimDropMain.getInstance().getDatabase().saveData(event.getPlayer());
+        ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().remove(event.getPlayer().getUniqueId());
     }
 
     public boolean hasEnoughSpace(ItemStack[] storageContents, ItemStack itemStack) {

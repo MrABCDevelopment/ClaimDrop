@@ -15,5 +15,10 @@ public enum DropOption {
     /**
      * Drops to player's ender chest, when it is full, drops normally
      */
-    ENDER_CHEST
+    ENDER_CHEST,
+
+    /**
+     * This turn drops off
+     */
+    DROPS_OFF;
 }

@@ -32,7 +32,6 @@ public class ClaimDropMain extends JavaPlugin {
         if(Settings.useDatabase) {
             this.database = new Database();
             this.database.connect(Settings.databaseType);
-            this.database.loadData();
             this.database.autoSaveData();
         }
 
@@ -44,14 +43,14 @@ public class ClaimDropMain extends JavaPlugin {
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> new UpdateChecker(ClaimDropMain.getInstance(), 108991).getVersion(version -> {
             if (getDescription().getVersion().equals(version)) {
                 Util.sendPluginMessage("");
-                Util.sendPluginMessage("&aThere is new ClaimDrop version!");
+                Util.sendPluginMessage("&aYour version is up to date!");
                 Util.sendPluginMessage("&aYour version: " + getDescription().getVersion());
-                Util.sendPluginMessage("&aNew version: " + version);
                 Util.sendPluginMessage("");
             } else {
                 Util.sendPluginMessage("");
-                Util.sendPluginMessage("&aYour version is up to date!");
+                Util.sendPluginMessage("&aThere is new ClaimDrop version!");
                 Util.sendPluginMessage("&aYour version: " + getDescription().getVersion());
+                Util.sendPluginMessage("&aNew version: " + version);
                 Util.sendPluginMessage("");
             }
         }), 10L, 20L * 300);

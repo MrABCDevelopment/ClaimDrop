@@ -106,16 +106,24 @@ public class CommandHandler implements TabExecutor {
     }
 
     private GItem getActualOption(UUID uuid) {
+        GItem gItem = null;
         switch (ClaimDropMain.getInstance().getClaimDropManager().getOption(uuid)) {
             case NORMAL:
-                return new GItem(Material.DIRT, "&6&lNormal Drop", ColourUtil.colouredLore("", "&aCurrently Activated!"));
+                gItem = new GItem(Material.DIRT, "&6&lNormal Drop", new ArrayList<>());
+                break;
             case INVENTORY:
-                return new GItem(Material.CHEST, "&6&lInventory Drop", ColourUtil.colouredLore("", "&aCurrently Activated!"));
+                gItem = new GItem(Material.CHEST, "&6&lInventory Drop", new ArrayList<>());
+                break;
             case ENDER_CHEST:
-                return new GItem(Material.ENDER_CHEST, "&6&lIEnderChest Drop", ColourUtil.colouredLore("", "&aCurrently Activated!"));
-            default:
-                return null;
+                gItem = new GItem(Material.ENDER_CHEST, "&6&lIEnderChest Drop", new ArrayList<>());
+                break;
+            case DROPS_OFF:
+                gItem = new GItem(Material.BARRIER, "&6&lDrop is off", new ArrayList<>());
+                break;
         }
+        gItem.getLore().add(" ");
+        gItem.getLore().add(ColourUtil.colorize("&aCurrently Activated!"));
+        return gItem;
     }
 
 }
