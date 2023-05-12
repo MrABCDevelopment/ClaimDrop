@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 public class ClaimDropManager {
 
-    private Map<UUID, DropOption> playersOptions;
+    private final Map<UUID, DropOption> playersOptions;
 
     public ClaimDropManager() {
         playersOptions = new HashMap<>();

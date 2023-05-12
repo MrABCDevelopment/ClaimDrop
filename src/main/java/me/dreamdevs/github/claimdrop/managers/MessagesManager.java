@@ -13,7 +13,7 @@ import java.util.Map;
 @Getter
 public class MessagesManager {
 
-    private Map<String, String> messages;
+    private final Map<String, String> messages;
 
     public MessagesManager(ClaimDropMain plugin) {
         messages = new HashMap<>();

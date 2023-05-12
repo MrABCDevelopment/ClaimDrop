@@ -94,9 +94,7 @@ public class CommandHandler implements TabExecutor {
                 gui.openGUI(player);
                 return true;
             }
-        } catch (Exception e) {
-
-        }
+        } catch (Exception e) {}
         return true;
     }
 
@@ -107,7 +105,7 @@ public class CommandHandler implements TabExecutor {
             StringUtil.copyPartialMatches(strings[0], arguments.keySet(), completions);
             Collections.sort(completions);
             return completions;
-        } else return null;
+        } else return Collections.emptyList();
     }
 
     public void registerCommand(String command, Class<? extends ArgumentCommand> clazz) {
