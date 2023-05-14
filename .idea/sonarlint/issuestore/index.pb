@@ -27,3 +27,7 @@ Fsrc/main/java/me/dreamdevs/github/claimdrop/database/DatabaseYAML.java,d\a\da2
 Lsrc/main/java/me/dreamdevs/github/claimdrop/listeners/InventoryListener.java,b\e\bed962ffa6f868b3081e64defca2dc384310978c
 k
 ;src/main/java/me/dreamdevs/github/claimdrop/DropOption.java,2\1\21268b4cc8b8779904c93ff4d8f0b399ee6ad517
+x
+Hsrc/main/java/me/dreamdevs/github/claimdrop/commands/CommandHandler.java,8\a\8a72eae0530d5685c6b932564b842cc77480c1d8
+n
+>src/main/java/me/dreamdevs/github/claimdrop/UpdateChecker.java,8\e\8e64fd18adac93197595656b508b60a363081601

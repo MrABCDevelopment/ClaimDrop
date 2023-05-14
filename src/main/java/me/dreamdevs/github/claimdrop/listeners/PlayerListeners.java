@@ -62,13 +62,16 @@ public class PlayerListeners implements Listener {
 
     @EventHandler
     public void joinEvent(PlayerJoinEvent event) {
-        ClaimDropMain.getInstance().getDatabase().loadData(event.getPlayer());
+        if(Settings.useDatabase)
+            ClaimDropMain.getInstance().getDatabase().loadData(event.getPlayer());
     }
 
     @EventHandler
     public void quitEvent(PlayerQuitEvent event) {
-        ClaimDropMain.getInstance().getDatabase().saveData(event.getPlayer());
-        ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().remove(event.getPlayer().getUniqueId());
+        if(Settings.useDatabase) {
+            ClaimDropMain.getInstance().getDatabase().saveData(event.getPlayer());
+            ClaimDropMain.getInstance().getClaimDropManager().getPlayersOptions().remove(event.getPlayer().getUniqueId());
+        }
     }
 
     public boolean hasEnoughSpace(ItemStack[] storageContents, ItemStack itemStack) {
